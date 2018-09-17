@@ -9,7 +9,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements ImageProcessThread.Callback{
 
     //весь код ниже выполняется в мейнтреде
     private ImageView mDoge;
