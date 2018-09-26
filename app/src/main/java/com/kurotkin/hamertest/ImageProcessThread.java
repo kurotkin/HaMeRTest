@@ -44,7 +44,11 @@ public class ImageProcessThread extends HandlerThread {
                         //выдергиваем битмапу и процессим ее
                         Bitmap bitmap = (Bitmap) msg.obj;
                         processBitmap(bitmap);
-                        msg.recycle();
+                        try {
+                            msg.recycle(); //it can work in some situations
+                        } catch (IllegalStateException e) {
+                            mBackgroundHandler.removeMessages(msg.what); //if recycle doesnt work we do it manually
+                        }
                     }
                 }
             }
